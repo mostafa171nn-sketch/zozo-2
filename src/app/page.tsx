@@ -74,6 +74,7 @@ export default function Home() {
     'our-photos/1.jpeg',
     'our-photos/2.jpeg',
     'our-photos/flower 4 l 17 l 2026.jpeg',
+    'our-photos/g.p.jpeg',
   ]
   const totalPages = 100;
   for (let i = 1; i <= totalPages ; i++) {
