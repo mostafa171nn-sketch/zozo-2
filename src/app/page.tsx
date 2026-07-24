@@ -1,7 +1,6 @@
 'use client'
 import { useState, useEffect, useRef, useCallback } from 'react'
 import Image from "next/image"
-import { useAudio } from './AudioProvider'
 
 export default function Home() {
   const [stage, setStage] = useState(0)
@@ -9,7 +8,6 @@ export default function Home() {
   const [currentPage, setCurrentPage] = useState(0)
   const [isMobile, setIsMobile] = useState(false)
   const noBtnRef = useRef<HTMLButtonElement>(null)
-  const { playMusic } = useAudio()
 
   const positions = [
     { left: '20%', top: '20%' },
@@ -44,10 +42,7 @@ export default function Home() {
     })
   }, [moveNoButton])
 
-  const handleYesClick = useCallback(() => {
-    setShowResult(true)
-    playMusic()
-  }, [playMusic])
+
 
   useEffect(() => {
     if (!showResult) return
@@ -113,15 +108,7 @@ export default function Home() {
     return () => window.removeEventListener('resize', handleResize)
   }, [])
 
-  useEffect(() => {
-    const handleInteraction = () => playMusic()
-    document.addEventListener('click', handleInteraction)
-    document.addEventListener('touchstart', handleInteraction)
-    return () => {
-      document.removeEventListener('click', handleInteraction)
-      document.removeEventListener('touchstart', handleInteraction)
-    }
-  }, [playMusic])
+  
 
   useEffect(() => {
     if (noBtnRef.current && stage >= 5) {
@@ -150,24 +137,35 @@ export default function Home() {
     }
   }
 
-  const handlePrevPage = () => {
-    if (currentPage > 0) {
-      setCurrentPage(prev => prev - 1);
-      const page = pagesRef.current[currentPage - 1];
-      if (page) {
-        page.style.transform = 'rotateY(0deg)';
-        page.style.zIndex = (images.length - currentPage).toString();
-      }
-      if (currentPage === 1) {
-        coverRef.current!.style.display = 'flex';
-        coverRef.current!.style.zIndex = '1000';
-      }
-    }
-  }
+  // const handlePrevPage = () => {
+  //   if (currentPage > 0) {
+  //     setCurrentPage(prev => prev - 1);
+  //     const page = pagesRef.current[currentPage - 1];
+  //     if (page) {
+  //       page.style.transform = 'rotateY(0deg)';
+  //       page.style.zIndex = (images.length - currentPage).toString();
+  //     }
+  //     if (currentPage === 1) {
+  //       coverRef.current!.style.display = 'flex';
+  //       coverRef.current!.style.zIndex = '1000';
+  //     }
+  //   }
+  // }
 
   return (
-    <>
-      <h1 id="question" className={` text-white text-[38px] mb-[40px] transition-all duration-500 ${showResult ? 'hidden' : ''} sm:text-[32px] sm:mb-[25px]`}>
+
+    <>  
+
+<h2 className=''>this page my zozo😂</h2>
+
+
+    <h1>tshofy da wa2t mtshofeh b2a bs yaeny bsraha msh aarf a2olk eh ana mkontsh aayz kda khals mabena ashan ana fe3la habetk bgad hata law enty mhbtnish w ana aady ana a3tkd kda 
+      ashan ely byheb had msh bysebo b l hbal w l shola de w shoghl 3yal soghyra w mkhalya shakly ahbal bs ely enty aamlteh da na2s w 2la asl w ana ghltan eny sda2t wahda zayk enha momkn tb2a nadga 
+      w theb fe3la bs enty lesa 3ayla soghyra ana kont most3d a3ml ay haga aklm akhoky afhmo eny btklm gd msh bl3ab w anna momkn mnnzelsh hata w bs mnb3edsh howa yaeny tlab khatbto online wla eh m akid kan bytkalm da eh l tkhlof da  aklm aboky omk aady 3la l a2al nkon hawlna bs enty mhwltish w law bt2oly lnafsk 
+      ashan myhsalsh mshakl w l hbal da fbtdhaky 3la nafsk ashan enty kda 3ayla lesa w gbana ashan m2drtish tegy t2olely ay haga mn de m3 enk konty bt2olely aya moshkla ht2ablna hn7lha swa w l klam l ahbal ely ana sda2to da w enty m3 awl moshkla msha2 allah estshely  w maalsh y mostafa msh ha2dar akaml😔
+      bs aady b2a  w ana ashok asla en kol da hwar ashan mafish had byghyar ra2yo fi had belsor3a de yaeny akid l mawdo3 da kan fi dmaghk mn badry m3 eny habetk bgad w aktar menk kman😂 w hfdal ahbk, slam y zozo.
+    </h1>
+      {/* <h1 id="question" className={` text-white text-[38px] mb-[40px] transition-all duration-500 ${showResult ? 'hidden' : ''} sm:text-[32px] sm:mb-[25px]`}>
         <div className="ilo hover:top-[7px] hover:bg-black rounded-[10cm]">
           <span className="text-[#ff7c92] font-bold italic ii">I LOVE YOU 💖<br /></span>
         </div>
@@ -202,7 +200,7 @@ export default function Home() {
                ${stage === 4 ? 'scale-[4.4] ml-[30px]' : ''}
                 ${stage === 5 ? 'scale-[5.3] ml-[40px] absolute' : ''}`}
         
-        onClick={handleYesClick}
+      
        
         >
           {stage === 0 && 'yes'}
@@ -287,7 +285,7 @@ export default function Home() {
             </button>
           </div>
         </div>
-      )}
+      )} */}
     </>
   )
 }
